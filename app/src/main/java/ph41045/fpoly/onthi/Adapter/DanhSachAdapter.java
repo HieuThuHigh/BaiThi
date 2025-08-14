@@ -38,9 +38,10 @@ public class DanhSachAdapter extends RecyclerView.Adapter<DanhSachAdapter.ViewHo
         ThiSinh thiSinh = list.get(position);
 
         holder.txtTen.setText(thiSinh.getHoTen());
-        holder.txtPhong.setText(thiSinh.getPhongThi());
+        holder.txtCaThi.setText("Ca thi: " + thiSinh.getCaThi());
+        holder.txtPhong.setText("Phòng: " + thiSinh.getPhongThi());
 
-        // Sự kiện nút Xóa
+        // Xóa
         holder.btnXoa.setOnClickListener(v -> {
             new AlertDialog.Builder(context)
                     .setTitle("Xác nhận xóa")
@@ -54,7 +55,7 @@ public class DanhSachAdapter extends RecyclerView.Adapter<DanhSachAdapter.ViewHo
                     .show();
         });
 
-        // Nút sửa (bạn có thể làm thêm)
+        // Sửa
         holder.btnSua.setOnClickListener(v -> {
             // TODO: Code chức năng sửa
         });
@@ -66,16 +67,16 @@ public class DanhSachAdapter extends RecyclerView.Adapter<DanhSachAdapter.ViewHo
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtTen, txtPhong;
+        TextView txtTen, txtCaThi, txtPhong;
         ImageButton btnSua, btnXoa;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTen = itemView.findViewById(R.id.txtTen);
+            txtCaThi = itemView.findViewById(R.id.txtCaThi);
             txtPhong = itemView.findViewById(R.id.txtPhong);
             btnSua = itemView.findViewById(R.id.btnSua);
             btnXoa = itemView.findViewById(R.id.btnXoa);
         }
     }
-
 }
