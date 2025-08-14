@@ -10,7 +10,17 @@
         android:id="@+id/btnThem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Thêm" />
+        android:text="Thêm"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:backgroundTint="#E95124"
+        android:elevation="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="center" />
+
 
     <!-- RecyclerView hiển thị danh sách -->
     <androidx.recyclerview.widget.RecyclerView
