@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             if (position == 0) {
-                tab.setText("Danh sách");
+                tab.setText("Danh sách NV");
             } else {
                 tab.setText("Thông tin");
             }

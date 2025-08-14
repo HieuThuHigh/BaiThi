@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,10 +23,14 @@ public class ThongTinFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_thong_tin_fragment, container, false);
 
         TextView tvInfo = view.findViewById(R.id.tvInfo);
-        tvInfo.setText("Họ tên: Nguyễn Văn A\nMã SV: 123456\nLớp: CNTT1");
+        ImageView myImg = view.findViewById(R.id.imageView); // đổi sang ImageView
+
+        myImg.setImageResource(R.drawable.avt);
+        tvInfo.setText("Họ tên: Lê Minh Hiếu\nMã SV: PH41045\nLớp: MD20302");
 
         return view;
     }
+
 }
 
 
