@@ -37,7 +37,7 @@
                 android:id="@+id/txtCaThi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ca thi" />
+                android:text="Tuổi" />
         </LinearLayout>
 
         <ImageButton

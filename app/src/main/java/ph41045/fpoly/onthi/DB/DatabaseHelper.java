@@ -51,6 +51,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long result = db.insert(TABLE_THISINH, null, values);
         return result != -1;
     }
+    // Thêm vào DatabaseHelper
+    public boolean capNhatThiSinh(ThiSinh thiSinh) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COL_HOTEN, thiSinh.getHoTen());
+        values.put(COL_CATHI, thiSinh.getCaThi());
+        values.put(COL_PHONGTHI, thiSinh.getPhongThi());
+
+        int result = db.update(TABLE_THISINH, values, COL_ID + "=?", new String[]{String.valueOf(thiSinh.getId())});
+        db.close();
+        return result > 0;
+    }
+
+    // Xóa thí sinh
+    public boolean xoaThiSinh(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int result = db.delete(TABLE_THISINH, COL_ID + "=?", new String[]{String.valueOf(id)});
+        db.close();
+        return result > 0;
+    }
 
     // Lấy toàn bộ thí sinh từ CSDL
     public List<ThiSinh> getAllThiSinh() {
@@ -73,4 +93,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return list;
     }
+    public void xoaTatCaThiSinh() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_THISINH, null, null);
+        db.close();
+    }
+
 }

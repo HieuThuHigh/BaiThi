@@ -87,8 +87,8 @@ public class DanhSachFragment extends Fragment {
                 int caThi;
                 try {
                     caThi = Integer.parseInt(caThiStr);
-                    if (caThi < 1 || caThi > 6) {
-                        Toast.makeText(getContext(), "Ca thi chỉ từ 1 đến 6", Toast.LENGTH_SHORT).show();
+                    if (caThi <= 18 || caThi >= 65) {
+                        Toast.makeText(getContext(), "Tuổi chỉ từ 18 đến 65", Toast.LENGTH_SHORT).show();
                         return;
                     }
                 } catch (NumberFormatException e) {
@@ -102,19 +102,19 @@ public class DanhSachFragment extends Fragment {
                     return;
                 }
 
-                // Lưu DB
-                int newId = list.size() + 1;
-                ThiSinh thiSinhMoi = new ThiSinh(newId, hoTen, caThi, phongThi);
+                // Lưu DB (ID để 0 cho SQLite tự sinh)
+                ThiSinh thiSinhMoi = new ThiSinh(0, hoTen, caThi, phongThi);
                 boolean kq = dbHelper.themThiSinh(thiSinhMoi);
                 if (kq) {
-                    list.add(thiSinhMoi);
-                    adapter.notifyItemInserted(list.size() - 1);
+                    // Lấy lại dữ liệu từ DB để luôn đúng ID & thứ tự
+                    list.clear();
+                    list.addAll(dbHelper.getAllThiSinh());
+                    adapter.notifyDataSetChanged();
                     dialog.dismiss(); // đóng dialog sau khi lưu thành công
                 } else {
                     Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
                 }
             });
-
         });
 
         dialog.show();
